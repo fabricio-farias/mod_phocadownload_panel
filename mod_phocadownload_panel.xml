@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+	type="module"
+	version="2.5"
+	client="administrator">
+	<name>mod_phocadownload_panel</name>
+	<author>Fabricio Farias</author>
+	<creationDate>April 2014</creationDate>
+	<copyright>Copyright (C) 2005 - 2013 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>fabriciorelicario@gmail.com</authorEmail>
+	<authorUrl>www.isgh.org.br</authorUrl>
+	<version>2.5.0</version>
+	<description>MOD_PHOCADOWNLOAD_PANEL_XML_DESCRIPTION</description>
+	<files>
+		<filename module="mod_phocadownload_panel">mod_phocadownload_panel.php</filename>
+		<filename>index.html</filename>
+		<filename>mod_phocadownload_panel.xml</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+		<folder>js</folder>
+		<folder>css</folder>
+		<folder>images</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.mod_phocadownload_panel.ini</language>
+		<language tag="pt-BR">pt-BR.mod_phocadownload_panel.ini</language>
+	</languages>
+
+	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_MOD_PHOCADOWNLOAD_PANEL_HTML" />
+        
+	<config>
+            
+		<fields name="params">
+                    
+                        <fieldset name="connection" label="MOD_PHOCADOWNLOAD_PANEL_FIELDSET_CONNECTION_LABEL">
+                            
+                            <field name="spacer1" type="spacer" class="text"
+					label="MOD_PHOCADOWNLOAD_PANEL_MODULE_CONNECTION_LABEL"
+				/>
+                            
+                             <field
+                                    name="dbtype"
+                                    type="databaseconnection"
+                                    label="COM_CONFIG_FIELD_DATABASE_TYPE_LABEL"
+                                    description="COM_CONFIG_FIELD_DATABASE_TYPE_DESC"
+                                    supported="mysql,mysqli,sqlsrv,sqlazure"
+                                    filter="string" />
+
+                            <field
+                                    name="host"
+                                    type="text"
+                                    label="COM_CONFIG_FIELD_DATABASE_HOST_LABEL"
+                                    description="COM_CONFIG_FIELD_DATABASE_HOST_DESC"
+                                    filter="string"
+                                    size="30" />
+
+                            <field
+                                    name="user"
+                                    type="text"
+                                    label="COM_CONFIG_FIELD_DATABASE_USERNAME_LABEL"
+                                    description="COM_CONFIG_FIELD_DATABASE_USERNAME_DESC"
+                                    filter="string"
+                                    size="30" />
+
+                            <field
+                                    name="db"
+                                    type="text"
+                                    label="COM_CONFIG_FIELD_DATABASE_NAME_LABEL"
+                                    description="COM_CONFIG_FIELD_DATABASE_NAME_DESC"
+                                    filter="string"
+                                    size="30" />
+
+                            <field
+                                    name="password"
+                                    type="password"
+                                    label="COM_CONFIG_FIELD_DATABASE_PASSWORD_LABEL"
+                                    description="COM_CONFIG_FIELD_DATABASE_PASSWORD_DESC"
+                                    filter="string"
+                                    size="30" />
+                            
+                            <field
+                                    name="dbprefix"
+                                    type="text"
+                                    default="#__"
+                                    label="COM_CONFIG_FIELD_DATABASE_PREFIX_LABEL"
+                                    description="COM_CONFIG_FIELD_DATABASE_PREFIX_DESC"
+                                    filter="string"
+                                    size="10" />
+
+                        </fieldset>
+                        
+			<fieldset name="basic" addfieldpath="/administrator/components/com_phocadownload/models/fields">
+                            <field
+                                name="module"
+                                type="hidden"
+                                default="true" />
+                                
+                            <field
+                                name="category_type"
+                                type="list"
+                                label="MOD_CUSTOM_FIELD_CATEGORY_TYPE_LABEL"
+                                description="MOD_CUSTOM_FIELD_CATEGORY_TYPE_DESC"
+                                default="">
+                                <option value="">Todos</option>
+                                <option value="I">Interno</option>
+                                <option value="E">Externo</option>
+                            </field>
+                            
+<!--                            <field name="units"
+                                   type="sql"
+                                   query="SELECT id , short_title FROM #__phocadownload_units where published=1"
+                                   multiple="multiple"
+                                   key_field="id"
+                                   value_field="short_title"
+                                   label="MOD_CUSTOM_FIELD_UNITS_TYPE_LABEL"
+                                   description="MOD_CUSTOM_FIELD_UNITS_TYPE_DESC"
+                                   class="inputbox"
+                                   size="6">
+                                <option value="">Todos</option>
+                            </field>-->
+                            <!--<field name="units" type="phocadownloadunit" multiple="1" label="MOD_CUSTOM_FIELD_UNITS_TYPE_LABEL" description="MOD_CUSTOM_FIELD_UNITS_TYPE_DESC" class="inputbox" size="6" />-->
+                                 <field
+					name="prepare_content"
+					type="radio"
+					label="MOD_CUSTOM_FIELD_PREPARE_CONTENT_LABEL"
+					description="MOD_CUSTOM_FIELD_PREPARE_CONTENT_DESC"
+					default="1">
+					<option
+						value="0">JNo</option>
+					<option
+						value="1">JYes</option>
+				</field>
+				<field name="backgroundimage" type="media"
+					label="MOD_CUSTOM_FIELD_BACKGROUNDIMAGE_LABEL" description="MOD_BACKGROUNDIMAGE_FIELD_LOGO_DESC" />
+			</fieldset>
+			<fieldset
+				name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+
+				<field
+					name="cache"
+					type="list"
+					default="1"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC">
+					<option
+						value="1">JGLOBAL_USE_GLOBAL</option>
+					<option
+						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field
+					name="cache_time"
+					type="text"
+					default="900"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+				<field
+					name="cachemode"
+					type="hidden"
+					default="static">
+					<option
+						value="static"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
